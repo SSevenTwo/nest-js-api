@@ -8,14 +8,22 @@ export class TasksService {
     private tasks: Task[] = [];
 
     constructor(){
-        const task: Task = {
+        const task1: Task = {
             id: v4(),
             title: "Clean house",
             description: "All rooms are filthy.",
             status: TaskStatus.OPEN
         };
 
-        this.tasks.push(task);
+        const task2: Task = {
+            id: v4(),
+            title: "Wash dog",
+            description: "Fred is quite smelly.",
+            status: TaskStatus.OPEN
+        };
+
+        this.tasks.push(task1);
+        this.tasks.push(task2);
     }
 
     getAllTasks(): Task[] {
@@ -34,5 +42,9 @@ export class TasksService {
 
         this.tasks.push(task);
         return task;
+    }
+
+    getTaskById(id:string): Task{
+        return this.tasks.find((task)=> task.id === id);
     }
 }
